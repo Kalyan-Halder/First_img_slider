@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Slider.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <img src="4.jpg" alt="" class="last">
+            <img src="1.jpg" alt="">
+            <img src="2.jpg" alt="">
+            <img src="3.jpg" alt="">
+            <img src="4.jpg" alt="">
+            <img src="1.jpg" alt="" class="first">
+        </div>
+        <i class="fas fa-arrow-left" id="pre"></i>
+        <i class="fas fa-arrow-right" id="next"></i>
+
+
+
+        <!-- added later -->
+
+
+        <div class="navigation">
+            <div class="btn"></div>
+            <div class="btn"></div>
+            <div class="btn"></div>
+            <div class="btn"></div>
+             
+        </div>
+    </div>
+    <script>
+         const wrapper = document.querySelector(".wrapper");
+         const main = document.querySelector(".container");
+         const imgs = document.querySelectorAll(".container img");
+
+         // added later 
+
+         const nav = document.querySelector('.navigation');
+         const btns = document.querySelectorAll('.btn');
+         btns[0].classList.add('active');
+
+         // was added later above
+
+
+
+
+         const nxtbtn = document.querySelector("#next");
+         const prebtn = document.querySelector("#pre");
+          
+         const size =  imgs[3].clientWidth;
+         let counter  = 1;
+  
+         main.style.transform = 'translate(' + (-size*counter) + 'px)' ;
+         main.style.transform = "translate($(-size*counter)px)"
+     
+         
+         nxtbtn.addEventListener('click',function(){
+            if(counter >= imgs.length -1){
+                   return;
+               }
+               counter++;
+               console.log(-size*counter);
+               // added later
+               btns.forEach(function(button){
+                    button.classList.remove("active");
+               });
+               if(counter==5){
+                btns[0].classList.add('active');
+               }
+               else{
+                btns[counter-1].classList.add('active');
+               }
+               
+               // was added later above
+               main.style.transition = 'transform .5s ease-in-out' ;
+               main.style.transform = 'translate(' + (-size*counter) + 'px)' ;
+               console.log(counter);              
+         });
+
+         prebtn.addEventListener('click',function(){
+               if(counter <=0){
+                   return;
+               }
+               counter--;
+                // added later
+                btns.forEach(function(button){
+                    button.classList.remove("active");
+               });
+               if(counter==0){
+                btns[3].classList.add('active');
+               }
+               else{
+                btns[counter-1].classList.add('active');
+               }
+               
+               
+               // was added later above
+               main.style.transition = 'transform .5s ease-in-out' ;
+               main.style.transform = 'translate(' + (-size*counter) + 'px)' ;
+               console.log(counter);            
+         });
+
+         main.addEventListener("transitionend",function(){
+                
+               if(imgs[counter].className === "first"){
+                   main.style.transition = 'none' ;
+                   counter = 1;
+                   console.log(-size*counter);
+                   main.style.transform = 'translate(' + (-size*counter) + 'px)' ;
+               }
+               if(imgs[counter].className === "last"){
+                   main.style.transition = 'none' ;
+                   counter = 4;
+                   main.style.transform = 'translate(' + (-size*counter) + 'px)' ;
+               }
+         });
+
+
+        // for autometic slider
+    
+        const autometic = function(){
+               counter++;
+               console.log(-size*counter);
+                 // added later
+               btns.forEach(function(button){
+                    button.classList.remove("active");
+               });
+               if(counter==5){
+                btns[0].classList.add('active');
+               }
+               else{
+                btns[counter-1].classList.add('active');
+               }
+               
+               // was added later above
+               main.style.transition = 'transform .5s ease-in-out' ;
+               main.style.transform = 'translate(' + (-size*counter) + 'px)' ;
+               console.log(counter);    
+        };
+        const slider = function(){
+           auto = setInterval(() => {
+               autometic();
+           }, 2000);
+        };
+
+      slider();
+
+       wrapper.addEventListener('mouseenter',()=>{
+          clearInterval(auto);
+       });
+       wrapper.addEventListener('mouseleave',slider);
+
+
+
+       // button navigation (was added later)
+
+       const manualNav = function(i){
+                  if(i==0){
+                    btns.forEach(function(button){
+                    button.classList.remove("active");
+                    });
+                    btns[i].classList.add('active');
+                    main.style.transition = 'transform .5s ease-in-out' ;
+                    main.style.transform = 'translate(' + (-size*1) + 'px)' ;
+                  }
+                  else if(i == 1){
+                    btns.forEach(function(button){
+                    button.classList.remove("active");
+                    });
+                    btns[i].classList.add('active');
+                    main.style.transition = 'transform .5s ease-in-out' ;
+                    main.style.transform = 'translate(' + (-size*2) + 'px)' ;
+                  }
+                  else if(i == 2){
+                    btns.forEach(function(button){
+                    button.classList.remove("active");
+                    });
+                    btns[i].classList.add('active');
+                    main.style.transition = 'transform .5s ease-in-out' ;
+                    main.style.transform = 'translate(' + (-size*3) + 'px)' ;
+                  }
+                  else if (i == 3){
+                    btns.forEach(function(button){
+                    button.classList.remove("active");
+                    });
+                    btns[i].classList.add('active');
+                    main.style.transition = 'transform .5s ease-in-out' ;
+                    main.style.transform = 'translate(' + (-size*4) + 'px)' ;
+                  }
+       };
+
+       Array.from(btns).forEach(function(button,i){
+           button.addEventListener("click",function(){
+                
+                manualNav(i);
+               
+                
+           });
+        });
+
+        
+    </script>
+</body>
+</html>

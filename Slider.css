@@ -1,0 +1,160 @@
+.wrapper {
+  width: 800px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  height: 500px;
+}
+img {
+  max-width: 100%;
+}
+.wrapper .container {
+  display: flex;
+}
+#pre {
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 20px;
+}
+#next {
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  right: 20px;
+}
+.navigation {
+  display: flex;
+  position: absolute;
+  top: 350px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+.btn {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin: 10px;
+  background-color: rgb(245, 245, 245);
+  cursor: pointer;
+}
+.active {
+  background-color: red;
+}
+
+@media only screen and (max-width: 800px) {
+  .wrapper {
+    width: 600px;
+  }
+  .navigation {
+    top: 320px;
+    left: 50%;
+  }
+  #pre {
+    font-size: 30px;
+    top: 35%;
+    left: 20px;
+  }
+  #next {
+    font-size: 30px;
+    top: 35%;
+    right: 20px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .wrapper {
+    width: 600px;
+  }
+  .navigation {
+    top: 320px;
+    left: 50%;
+  }
+  #pre {
+    font-size: 30px;
+    top: 35%;
+    left: 20px;
+  }
+  #next {
+    font-size: 30px;
+    top: 35%;
+    right: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    width: 100%;
+  }
+  .navigation {
+    top: 270px;
+    left: 50%;
+  }
+  #pre {
+    font-size: 30px;
+    top: 35%;
+    left: 20px;
+  }
+  #next {
+    font-size: 30px;
+    top: 35%;
+    right: 20px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .navigation {
+    top: 220px;
+    left: 50%;
+  }
+  #pre {
+    font-size: 30px;
+    top: 30%;
+    left: 20px;
+  }
+  #next {
+    font-size: 30px;
+    top: 30%;
+    right: 20px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .navigation {
+    top: 190px;
+    left: 50%;
+  }
+  #pre {
+    font-size: 30px;
+    top: 20%;
+    left: 20px;
+  }
+  #next {
+    font-size: 30px;
+    top: 20%;
+    right: 20px;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .navigation {
+    top: 150px;
+    left: 50%;
+  }
+  #pre {
+    font-size: 30px;
+    top: 15%;
+    left: 20px;
+  }
+  #next {
+    font-size: 30px;
+    top: 15%;
+    right: 20px;
+  }
+}
